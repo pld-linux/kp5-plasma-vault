@@ -1,15 +1,15 @@
-%define		kdeplasmaver	5.15.3
+%define		kdeplasmaver	5.21.2
 %define		qtver		5.9.0
 %define		kpname		plasma-vault
 
 Summary:	KDE Plasma Vault
 Name:		kp5-%{kpname}
-Version:	5.15.3
+Version:	5.21.2
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	f2c1e4e95bf01106c2f9b434366258c3
+# Source0-md5:	9c98b7ca85f517ae3f3780bb2c4b1dbd
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -53,6 +53,7 @@ format.
 install -d build
 cd build
 %cmake -G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	../
 %ninja_build
@@ -69,13 +70,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kpname}.lang
 %defattr(644,root,root,755)
 %{_libdir}/qt5/plugins/kf5/kded/plasmavault.so
+%{_libdir}/qt5/plugins/kf5/kfileitemaction/plasmavaultfileitemaction.so
 %{_libdir}/qt5/plugins/plasma/applets/plasma_applet_vault.so
 %{_datadir}/kservices5/plasma-applet-org.kde.plasma.vault.desktop
 %{_datadir}/metainfo/org.kde.plasma.vault.appdata.xml
 %dir %{_datadir}/plasma/plasmoids/org.kde.plasma.vault
 %dir %{_datadir}/plasma/plasmoids/org.kde.plasma.vault/contents
 %dir %{_datadir}/plasma/plasmoids/org.kde.plasma.vault/contents/ui
-%{_datadir}/plasma/plasmoids/org.kde.plasma.vault/contents/ui/ActionItem.qml
 %{_datadir}/plasma/plasmoids/org.kde.plasma.vault/contents/ui/VaultItem.qml
 %{_datadir}/plasma/plasmoids/org.kde.plasma.vault/contents/ui/main.qml
 %{_datadir}/plasma/plasmoids/org.kde.plasma.vault/metadata.desktop
