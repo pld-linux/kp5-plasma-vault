@@ -1,15 +1,15 @@
-%define		kdeplasmaver	5.22.3
+%define		kdeplasmaver	5.22.4
 %define		qtver		5.9.0
 %define		kpname		plasma-vault
 
 Summary:	KDE Plasma Vault
 Name:		kp5-%{kpname}
-Version:	5.22.3
+Version:	5.22.4
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	2e2fc21f22fe30315e841064c96218a9
+# Source0-md5:	d464d91d37cf12da1721abc18ec94140
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -72,7 +72,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/qt5/plugins/kf5/kded/plasmavault.so
 %{_libdir}/qt5/plugins/kf5/kfileitemaction/plasmavaultfileitemaction.so
 %{_libdir}/qt5/plugins/plasma/applets/plasma_applet_vault.so
-%{_datadir}/kservices5/plasma-applet-org.kde.plasma.vault.desktop
 %{_datadir}/metainfo/org.kde.plasma.vault.appdata.xml
 %dir %{_datadir}/plasma/plasmoids/org.kde.plasma.vault
 %dir %{_datadir}/plasma/plasmoids/org.kde.plasma.vault/contents
